@@ -1,0 +1,48 @@
+# Opti Run Log
+
+> Every step Opti takes is written here as a commit after a predict-echo cycle.
+
+## Purpose
+Show what the run log is for: a history of the robot that guesses a bounce, moves, hears the real bounce, and corrects. Source: fitzyracing1/opti-run-log.
+
+## How it works (plain English)
+1. Predict the echo.
+2. Act on that prediction.
+3. Hear the real return.
+4. Correct the guess.
+5. Commit that step to this log repo.
+
+## Key ideas
+- Predicted echo (the guessed bounce)
+- Real return (the bounce that actually arrived)
+- Step commit (one git commit per cycle)
+
+## The actual code
+```
+predict_echo()
+act_on_predicted_echo()
+hear_real_return()
+correct_hypothesis()
+commit_step()
+```
+
+## Line-by-line translation
+1. predict_echo() → “guess the bounce before moving”
+2. act_on_predicted_echo() → “move on the guess, not on a full map”
+3. hear_real_return() → “listen for what actually came back”
+4. correct_hypothesis() → “fix the guess”
+5. commit_step() → “write that cycle into the log repo”
+
+## Decisions the program makes
+- If the real echo matches the guess → keep the hypothesis
+- If it does not → correct, then commit the correction
+- Always commit the step
+
+## What a person would notice
+The history of the robot is a list of commits, not a hidden memory.
+
+## Current status
+Barrage clone. Live steps stay in the source log repo.
+
+## Next possible steps
+Open the source run log and read the latest commit message.
